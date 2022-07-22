@@ -1,0 +1,5 @@
+*~
+*.swp
+markdown_files/
+venv/
+ALL_DISCOVERIES.md
