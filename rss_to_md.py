@@ -1,7 +1,7 @@
 import os
 import time
-import re
 import random
+import datetime
 import feedparser
 import requests
 from bs4 import BeautifulSoup
@@ -101,12 +101,9 @@ __{self.summary}__
         return len(self.discoveries.keys())
 
     def create_filename(self):
-        """Return a lexically sortable filename e.g.:"0032-..." """
-        try:
-            entry_no = int(re.search("\d+$", self.title).group(0))
-        except:
-            entry_no = random.randint(9000, 9999)
-        return f"{entry_no:04d} -- {self.title}.md"
+        """Return a lexically sortable filename e.g.:"number-..." """
+        ordinal = datetime.datetime.fromisoformat(self.date).toordinal()
+        return f"{ordinal} -- {self.title}.md"
 
 
 
